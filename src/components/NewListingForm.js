@@ -30,33 +30,33 @@ function NewListingForm({ setListings, listings }) {
     }
 
     return (
-        <form className="searchbar" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="description"
-            id="new-listing-description"
-            placeholder="item description"
-            value={description}
-            onChange={event => setDescription(event.target.value)}
-          />
-          <input
-            type="text"
-            name="location"
-            id="new-listing-location"
-            placeholder="item location"
-            value={location}
-            onChange={event => setLocation(event.target.value)}
-          />
-          <input
-            type="text"
-            name="image"
-            id="new-listing-image"
-            placeholder="item image"
-            value={image}
-            onChange={event => setImage(event.target.value)}
-
-          />
-          <button type="submit">+</button>
+        <form id="new-form" onSubmit={handleSubmit}>
+        <div>
+            <label>Add a new item:</label>
+            <input
+                type="text"
+                name="description"
+                placeholder="item description"
+                value={description}
+                onChange={event => setDescription(event.target.value)}
+            />
+            <input
+                type="text"
+                name="location"
+                placeholder="item location"
+                value={location}
+                onChange={event => setLocation(event.target.value)}
+            />
+            <input
+                type="text"
+                name="image"
+                placeholder="item image"
+                value={image}
+                onChange={event => setImage(event.target.value)}
+            />
+          <button type="submit"> + </button>
+        </div>
+          
         </form>
       );
 }

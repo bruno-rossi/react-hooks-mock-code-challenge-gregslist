@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import ListingsContainer from "./ListingsContainer";
+import NewListingForm from "./NewListingForm";
 
 function App() {
 
@@ -32,8 +33,9 @@ function App() {
 
   return (
     <div className="app">
-      <Header search={search} setSearch={setSearch} setListings={setListings} listings={listings} />
+      <Header search={search} setSearch={setSearch} />
       <ListingsContainer listings={listingsToDisplay} setListings={setListings} setIsSorted={setIsSorted} />
+      <NewListingForm listings={listings} setListings={setListings} />
     </div>
   );
 }

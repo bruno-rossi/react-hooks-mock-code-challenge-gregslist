@@ -1,8 +1,7 @@
 import React from "react";
 import Search from "./Search";
-import NewListingForm from "./NewListingForm";
 
-function Header({ search, setSearch, setListings, listings }) {
+function Header({ search, setSearch }) {
   return (
     <header>
       <h1>
@@ -13,7 +12,6 @@ function Header({ search, setSearch, setListings, listings }) {
       </h1>
       {/* Pass down search and setSearch to the Search component */}
       <Search search={search} setSearch={setSearch} />
-      <NewListingForm setListings={setListings} listings={listings} />
     </header>
   );
 }
