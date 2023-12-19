@@ -6,6 +6,7 @@ function App() {
 
   const [ listings, setListings ] = useState([]);
   const [ search, setSearch ] = useState("");
+  const [ isSorted, setIsSorted ] = useState(false);
 
   // fetch data from db inside useEffect and setListings to be that data
   useEffect(() => {
@@ -14,15 +15,25 @@ function App() {
     .then(data => setListings(data))
   }, [])  
 
-  // Create a new variable with searchedListings here
+  // Define a new variable with searchedListings:
   const searchedListings = listings.filter(listing => listing.description.toLowerCase().includes(search.toLowerCase()));
 
-  // console.log(listings);
+  // Define variable with sortedListings to sort them alphabetically by location:
+  const sortedListings = listings.sort(function(a, b){
+    if(a.location < b.location) { return -1; }
+    if(a.location > b.location) { return 1; }
+    return 0;
+})
+
+  // Define a listingsToDisplay variable which displays different arrays conditionally based on isSorted: 
+  const listingsToDisplay = isSorted ? sortedListings : searchedListings;
+
+  console.log(listingsToDisplay);
 
   return (
     <div className="app">
       <Header search={search} setSearch={setSearch} />
-      <ListingsContainer listings={searchedListings} setListings={setListings} />
+      <ListingsContainer listings={listingsToDisplay} setListings={setListings} setIsSorted={setIsSorted} />
     </div>
   );
 }
