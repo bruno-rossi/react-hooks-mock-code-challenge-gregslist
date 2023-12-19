@@ -4,6 +4,8 @@ function Search({ search, setSearch }) {
   
   function handleSubmit(e) {
     e.preventDefault();
+
+    // setSearch to equal the search state when submitting the form
     setSearch(search)
     console.log("submitted");
   }

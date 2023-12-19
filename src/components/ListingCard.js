@@ -2,14 +2,18 @@ import React, { useState } from "react";
 
 function ListingCard({ listing, listings, setListings }) {
 
+  // Define state for the Favorited button:
   const [ isFavorited, setIsFavorited ] = useState(false);
 
+  // Define function to change the isFavorited boolean onClick:
   function handleClick() {
     setIsFavorited(prevValue => !prevValue);
   }
 
+  // Define function to handle the delete event and DELETE fetch:
   function handleDelete(event) {
 
+    // Set a new array variable to filter out the listing that we are deleting:
     const listingsAfterDelete = listings.filter(element => listing.id)
 
     fetch(`http://localhost:6001/listings/${listing.id}`, {
@@ -23,6 +27,8 @@ function ListingCard({ listing, listings, setListings }) {
     .then(() => {
       setListings(listingsAfterDelete);
       console.log(listingsAfterDelete);
+
+      // To remove the listing's card from the page, we call the remove() method on the event target's parentNode's parentNode (2 levels above since the button is nested inside a div, which is nested inside the list item <li>): 
       event.target.parentNode.parentNode.remove();
     })
     

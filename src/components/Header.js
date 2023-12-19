@@ -10,6 +10,7 @@ function Header({ search, setSearch }) {
         </span>
         gregslist
       </h1>
+      {/* Pass down search and setSearch to the Search component */}
       <Search search={search} setSearch={setSearch} />
     </header>
   );
