@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div className="app">
-      <Header search={search} setSearch={setSearch} />
+      <Header search={search} setSearch={setSearch} setListings={setListings} listings={listings} />
       <ListingsContainer listings={listingsToDisplay} setListings={setListings} setIsSorted={setIsSorted} />
     </div>
   );
