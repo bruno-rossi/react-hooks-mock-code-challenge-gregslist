@@ -13,23 +13,18 @@ function ListingCard({ listing, listings, setListings }) {
   // Define function to handle the delete event and DELETE fetch:
   function handleDelete(event) {
 
-    // Set a new array variable to filter out the listing that we are deleting:
-    const listingsAfterDelete = listings.filter(element => listing.id)
-
     fetch(`http://localhost:6001/listings/${listing.id}`, {
-      method: "DELETE",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      }
+      method: "DELETE"
     })
     .then(response => response.json())
     .then(() => {
-      setListings(listingsAfterDelete);
       console.log(listingsAfterDelete);
 
-      // To remove the listing's card from the page, we call the remove() method on the event target's parentNode's parentNode (2 levels above since the button is nested inside a div, which is nested inside the list item <li>): 
-      event.target.parentNode.parentNode.remove();
+      // Set a new array variable to filter out the listing that we are deleting:
+      const listingsAfterDelete = listings.filter(element => element.id !== listing.id)
+
+      setListings(listingsAfterDelete);
+      
     })
     
   }
